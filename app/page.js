@@ -1,6 +1,6 @@
 import Image from "next/image";
 import getStripe from "@/utils/get_stripe";
-import { Container, AppBar, Button, Toolbar, Typography, Grid } from "@mui/material";
+import { Container, AppBar, Button, Box, Toolbar, Typography, Grid } from "@mui/material";
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import { AppPageRouteModule } from "next/dist/server/future/route-modules/app-page/module.compiled";
 import Head from "next/head"; // Correct import for Head
