@@ -14,6 +14,7 @@ Your task is to design a set of flashcards to help students learn and retain inf
 8. Tailor the difficulty level of the flashcards to the user's specified preferences.
 9. If given a body of text, extract the most important and relevant information for the flashcards.
 10. Aim to create a balanced set of flashcards that covers the topic comprehensively.
+11. Only create 10 flashcards
 
 Remember, your task is to design a set of flashcards to help students learn and retain information effectively. The goal is to facilitate learning
 

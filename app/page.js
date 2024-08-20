@@ -19,8 +19,8 @@ export default function Home() {
             Flashcard Saas
             </Typography>
           <SignedOut>
-            <Button color="inherit">Login</Button>
-            <Button color="inherit">Sign Up</Button>
+            <Button color="inherit" href="/sign-in">Login</Button>
+            <Button color="inherit" href="/sign-up">Sign Up</Button>
           </SignedOut>
           <SignedIn>
             
@@ -55,6 +55,67 @@ export default function Home() {
               Simply input your text and let our software do the rest.
               Creating flashcards has never been easier.
             </Typography>
+          </Grid>
+          <Grid item xs={12} md={4}>
+            <Typography variant="h6">Smart Flashcard</Typography>
+            <Typography>
+              {' '}
+              Simply input your text and let our software do the rest.
+              Creating flashcards has never been easier.
+            </Typography>
+          </Grid>
+          <Grid item xs={12} md={4}>
+          <Typography variant="h6">Accessible Anywhere</Typography>
+            <Typography>
+              {' '}
+              Simply input your text and let our software do the rest.
+              Creating flashcards has never been easier.
+            </Typography>
+          </Grid>
+        </Grid>
+      </Box>
+      <Box sx={{my: 6, textAlign: 'center'}}>
+        <Typography variant="h4">Pricing</Typography>
+        <Grid contained spacing={4}>
+          <Grid item xs={12} md={4}>
+            <Box
+              sx={{
+                p: 3,
+                border: '2px solid',
+                borderColor: 'grey.300',
+                borderRadius: 2, 
+              }}
+            >
+            <Typography variant="h6">Basic</Typography>
+            <Typography variant="h6">$5 / month</Typography>
+            <Typography>
+              {' '}
+              Acsess to basic flashcard features and limited storage
+            </Typography>
+            <Button variant="contained" color="primary" sx={{mt: 2}}>
+              CHOOSE BASIC
+            </Button>
+            </Box>
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <Box
+              sx={{
+                p: 3,
+                border: '2px solid',
+                borderColor: 'grey.300',
+                borderRadius: 2, 
+              }}
+            >
+            <Typography variant="h6">Pro</Typography>
+            <Typography variant="h6">$10 / month</Typography>
+            <Typography>
+              {' '}
+              Acsess to basic flashcard features and limited storage
+            </Typography>
+            <Button variant="contained" color="primary" sx={{mt: 2}}>
+              CHOOSE PRO
+            </Button>
+            </Box>
           </Grid>
         </Grid>
       </Box>
