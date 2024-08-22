@@ -3,7 +3,7 @@
 import { useUser } from "@clerk/nextjs";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { writeBatch, doc, collection, getDoc } from "firebase/firestore"; // Assuming you have Firestore initialized
+import { writeBatch, doc, collection, getDoc, setDoc } from "firebase/firestore"; // Assuming you have Firestore initialized
 import { Box, Container, Typography, Paper, TextField, Button, Grid, Card, CardActionArea, CardContent, Dialog, DialogTitle, DialogContentText, DialogContent, DialogActions } from "@mui/material";
 
 export default function Generate() {
