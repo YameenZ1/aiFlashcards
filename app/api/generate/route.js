@@ -28,19 +28,31 @@ Return in the following JSON format
     }
 }
 `
-export async function POST(req){
-    const openai = OpenAI()
-    const data = await req.text()
-    
-    const completion = await openai.chat.completion.create({
-        messeges: [
-            {role: 'system', content: systemPrompt},
-            {role: 'user', content: data},
-        ],
-        model: "gpt-4o",
-        responseFormat:{type: 'json_object'}
-    })
+export async function POST(req) {
+    const openai = new OpenAI();
+    const data = await req.text();
 
-    const flashcards = JSON.parse(completion.choices[0].key.content)
-    return NextResponse.json(flashcards.flashcards)
+    try {
+        const completion = await openai.chat.completion.create({
+            messages: [
+                { role: 'system', content: systemPrompt },
+                { role: 'user', content: data },
+            ],
+            model: "gpt-4o",
+            responseFormat: { type: 'json_object' }
+        });
+
+        console.log(completion.choices[0].message.content);
+        
+        // Ensure the content is parsed correctly
+        const flashcards = JSON.parse(completion.choices[0].message.content);
+
+        return NextResponse.json(flashcards.flashcards);
+
+    } catch (error) {
+        console.error("Error generating flashcards:", error);
+        return NextResponse.json({ error: "Failed to generate flashcards." }, { status: 500 });
+    }
 }
+
+

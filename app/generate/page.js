@@ -4,7 +4,7 @@ import { useUser } from "@clerk/nextjs";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { writeBatch, doc, collection, getDoc } from "firebase/firestore"; // Assuming you have Firestore initialized
-import { Box, Container, Typography, Paper, TextField, Button, Grid, Card, CardActionArea, CardContent } from "@mui/material";
+import { Box, Container, Typography, Paper, TextField, Button, Grid, Card, CardActionArea, CardContent, Dialog, DialogTitle, DialogContentText, DialogContent, DialogActions } from "@mui/material";
 
 export default function Generate() {
     const { isLoaded, isSignedIn, user } = useUser();
@@ -16,16 +16,23 @@ export default function Generate() {
     const router = useRouter();
 
     const handleSubmit = async () => {
-        fetch('/api/generate', { // Added a slash before 'api'
+        fetch('/api/generate', {
             method: 'POST',
-            body: JSON.stringify({ text }), // Ensure body is a string and passed as an object
+            body: JSON.stringify({ text }),
             headers: {
-                'Content-Type': 'application/json' // Set the content type to JSON
+                'Content-Type': 'application/json'
             }
         })
-            .then((res) => res.json())
-            .then((data) => setFlashcards(data)); // Fixed arrow function syntax
+        .then((res) => {
+            if (!res.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return res.json();
+        })
+        .then((data) => setFlashcards(data))
+        .catch((error) => console.error('Error:', error));
     };
+    
 
     const handleCardClick = (id) => {
         setFlipped((prev) => ({
@@ -151,11 +158,28 @@ export default function Generate() {
                             </Grid>
                         ))}
                     </Grid>
-                    <Button variant="contained" color="secondary" onClick={handleOpen} sx={{ mt: 2 }}>
-                        Save
-                    </Button>
+                    <Box sx={{mt: 4, display: 'flex', justifyContent: 'center'}}>
+                        <Button variant="contained" color="secondary" onClick={handleOpen} sx={{ mt: 2 }}>
+                            Save
+                        </Button>
+                    </Box>
                 </Box>
             )}
+
+            <Dialog open={open} onClose={handleClose}>
+                <DialogTitle>Swe Flashcards</DialogTitle>
+                <DialogContent>
+                    <DialogContentText>
+                        Please enter a name for your flashcard collection
+                    </DialogContentText>
+                    <TextField autofocus margein="dense" label="Collection Name" type="text" fullWidth value={name} onChange={(e) => setName(e.target.value)} variant="outlined">
+                </TextField>
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={handleClose}>Cancel</Button>
+                    <Button onClick={saveFlashcards}>Save</Button>
+                </DialogActions>
+            </Dialog>
         </Container>
     );
 }
