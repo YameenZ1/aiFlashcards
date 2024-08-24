@@ -57,19 +57,18 @@ export default function Home() {
             </Typography>
           </Grid>
           <Grid item xs={12} md={4}>
-            <Typography variant="h6">Smart Flashcard</Typography>
+            <Typography variant="h6">Smart Flashcards</Typography>
             <Typography>
               {' '}
-              Simply input your text and let our software do the rest.
-              Creating flashcards has never been easier.
+              Flashcards generated using the most advanced state of the art
+              large-language models.
             </Typography>
           </Grid>
           <Grid item xs={12} md={4}>
           <Typography variant="h6">Accessible Anywhere</Typography>
             <Typography>
               {' '}
-              Simply input your text and let our software do the rest.
-              Creating flashcards has never been easier.
+              Our flashcards are available to acsess on both PC and mobile.
             </Typography>
           </Grid>
         </Grid>
